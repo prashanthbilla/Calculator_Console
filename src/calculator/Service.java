@@ -145,7 +145,6 @@ public class Service {
                 selectOperation();
             case '#':
                 status();
-                selectOperation();
             case '$':
                 System.exit(0);
             case '!':
