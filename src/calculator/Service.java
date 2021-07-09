@@ -31,23 +31,18 @@ public class Service {
 
     public void secondNumber() {
         Scanner scanner = new Scanner(System.in);
-        Boolean tr = true;
-        while (tr) {
-            try {
-                System.out.print(" Enter a Second Number   =  ");
-                b = scanner.nextDouble();
-                if (b > 0) {
-                    selectOperation();
-                    tr = false;
-                } else {
-                    System.out.println(" Error(leads to reach value INFINITE), Please enter Second Number other than '0' ");
-                    tr = true;
-                }
-            } catch (InputMismatchException exception) {
-                System.out.println(" You Should enter Numeric Values because this is a Calculator, 0K....");
+        try {
+            System.out.print(" Enter a Second Number   =  ");
+            b = scanner.nextDouble();
+            if (b > 0) {
+                selectOperation();
+            } else {
+                System.out.println(" Error(leads to reach value INFINITE), Please enter Second Number other than '0' ");
                 secondNumber();
             }
-
+        } catch (InputMismatchException exception) {
+            System.out.println(" You Should enter Numeric Values because this is a Calculator, 0K....");
+            secondNumber();
         }
     }
 
