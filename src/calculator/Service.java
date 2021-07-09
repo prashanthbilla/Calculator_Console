@@ -8,33 +8,46 @@ public class Service {
     Double a, b;
     Double result;
     ArrayList<String> al;
-    Integer count;
 
     public void input() {
         al = new ArrayList<>();
         System.out.println("================================");
         System.out.println(" WELCOME TO THE NEW CALCULATOR");
         System.out.println("================================");
+        firstNumber();
+    }
+
+    public void firstNumber() {
         Scanner scanner = new Scanner(System.in);
         System.out.print(" Enter a First Number    =  ");
         try {
             a = scanner.nextDouble();
         } catch (InputMismatchException exception) {
             System.out.println(" You Should enter Numeric Values because this is a Calculator, 0K....");
-            input();
+            firstNumber();
         }
-        System.out.print(" Enter a Second Number   =  ");
-        try {
-            b = scanner.nextDouble();
-            if (b > 0) {
-                selectOperation();
-            } else {
-                System.out.println(" Error(leads to reach value INFINITE), Please enter Second Number other than '0' ");
-                input();
+        secondNumber();
+    }
+
+    public void secondNumber() {
+        Scanner scanner = new Scanner(System.in);
+        Boolean tr = true;
+        while (tr) {
+            try {
+                System.out.print(" Enter a Second Number   =  ");
+                b = scanner.nextDouble();
+                if (b > 0) {
+                    selectOperation();
+                    tr = false;
+                } else {
+                    System.out.println(" Error(leads to reach value INFINITE), Please enter Second Number other than '0' ");
+                    tr = true;
+                }
+            } catch (InputMismatchException exception) {
+                System.out.println(" You Should enter Numeric Values because this is a Calculator, 0K....");
+                secondNumber();
             }
-        } catch (InputMismatchException exception) {
-            System.out.println(" You Should enter Numeric Values because this is a Calculator, 0K....");
-            input();
+
         }
     }
 
@@ -79,7 +92,7 @@ public class Service {
         System.out.println("-------------------------");
         System.out.println("       (A+B)  = " + result);
         System.out.println("-------------------------");
-        String s = "  Addition        --> A * B =  " + result;
+        String s = "  Addition        --> A + B =  " + result;
         String t = addToList(s);
         System.out.println(t);
     }
@@ -92,7 +105,7 @@ public class Service {
         System.out.println("-------------------------");
         System.out.println("       (A-B)  = " + result);
         System.out.println("-------------------------");
-        String s = " Subtraction     --> A * B =  " + result;
+        String s = " Subtraction     --> A - B =  " + result;
         String t = addToList(s);
         System.out.println(t);
         if (b > a) {
