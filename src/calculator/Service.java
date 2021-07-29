@@ -8,6 +8,7 @@ public class Service {
     Double a, b;
     Double result;
     ArrayList<String> al;
+    Service service;
 
     public void input() {
         al = new ArrayList<>();
@@ -91,7 +92,6 @@ public class Service {
         String t = addToList(s);
         System.out.println(t);
     }
-
 
     public void sub() {
         result = a - b;
